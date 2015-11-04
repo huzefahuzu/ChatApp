@@ -1,4 +1,4 @@
-# ChatApp
+# ChatApp in Ruby On Rails.
 A Simple Chat application for educational purpose.
 
 This application works like a simple invitation system where a user has to invite another user for conversation . 
