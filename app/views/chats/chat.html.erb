@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Linked Chats</title>
+<%= stylesheet_link_tag 'style', media: 'all',
+                                           'data-turbolinks-track' => true %>
+
+</head>
+<body>
+
+
+	<!-- ---------------	Displays the list of Friends  --------------------- -->
+
+
+		<div class="left-pane">
+
+				<div class="left-pane-header-text" >
+					
+					<h2> Friends</h2>
+
+				</div>
+
+					
+					<ul class="left-pane-list">
+						
+						<% @fr.each do |f| %>
+
+						
+						<% if f.sender_id == current_user.id %>
+
+								<%= f.receiver.email %>
+															<!-- here the below receiver_id is used to fetch the receiver id from the friendship table and we use it in the send message link -->
+							<% receiver_id = f.receiver.id %>          
+
+						<% elsif f.receiver_id == current_user.id %>
+						
+
+								<%= f.sender.email %>
+									<% receiver_id = f.sender.id %>
+
+						<%end%>
+							
+							 
+							<%= link_to "Send Message" , {:controller => "chats", :action => "show_messages", :id => current_user.id , :idr =>  receiver_id , remote: true} %> <br />
+
+						<%end%>
+
+					</ul>
+			
+		</div>
+
+		<!-- ---------------	End of Left Panel. --------------------- -->
+		
+		<div class="chat-content">
+
+			<div class="chat-content-header">
+
+				<h1> Chat Box </h1>
+
+			</div>
+
+
+			<div class="chatcontainer">
+
+				<div class="chatheader">
+
+					<h3>Welcome <%= current_user.email %>.</h3>					
+
+				</div>
+
+				<div class="chatmessages">
+
+						<div id="task-form" display:none >
+						<% if !@result.nil? %>	
+						<%= render 'message_display' %>
+						<% end %>
+						</div>
+					
+				</div>
+				
+		
+		
+		
+			</div>
+
+		</div>
+
+
+</body>
+</html>

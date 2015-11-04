@@ -1,0 +1,10 @@
+<h1>LinkedChats</h1>
+
+Hi , it 2nd version here with token is : , <%= @user.token %>
+
+<p>
+Welcome to the LinkedChats! Click on the link below to activate your account:
+</p>
+
+<%= edit_invitation_url(@user.token) %>
+

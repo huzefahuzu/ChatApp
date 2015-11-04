@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Linkedchats</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<div class="header">
+
+				<div class="header-text">
+					
+					<h1> Linked Chats</h1>
+
+				</div>		
+				
+					  <div class="wrap">
+
+					 	 <% if current_user.present? %>
+
+					 	 		<%= link_to "Home" , users_path , class: 'button'%>&nbsp;&nbsp;
+
+					 		 <%= link_to "Friends" , users_chats_path , class: 'button'%>&nbsp;&nbsp;
+
+					 		 <%= link_to "Log Out" , destroy_user_session_path ,class: 'button', method: :DELETE %>&nbsp;
+
+					 	 <% else %>
+					  
+						 <%= link_to "Sign In" , new_user_session_path , class: 'button'%>
+
+					 	 <% end %>
+
+
+					  </div>
+
+				
+			
+		</div>
+
+		<div class="clearfix"></div>
+
+	<!-- ---------------	End of Header --------------------- -->
+
+ <% flash.each do |message_type, message| %>
+        <div class="alert alert-<%= message_type %>"><%= message %></div>
+ <% end %>
+
+ 
+
+<%= yield %>
+
+</body>
+</html>

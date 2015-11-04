@@ -1,0 +1,22 @@
+
+
+
+
+
+<% @result.each do |m| %>
+	
+	<%= m.text %> &emsp; <br />
+ 
+<% end %>
+<%= form_for(@m , url: chats_path , remote: true ) do |f| %>
+
+		      <%= f.label :Text %>
+		      <%= f.text_field :text, class: 'form-control' %>
+
+		   <%= f.hidden_field :sender_id, value: params[:id] %>
+		    <%= f.hidden_field :receiver_id, value: params[:idr] %>
+
+
+		      <%= f.submit "Save Changes", class: "btn btn-primary" %>
+		  <% end %>
+

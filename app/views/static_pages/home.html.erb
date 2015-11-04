@@ -1,0 +1,26 @@
+
+<ul class="users">
+
+<h1> Professionals that are currently registered with linkedchats.</h1>
+
+<!--  This below minus will the remove the current user from the list of 
+      of users being displayed . All users except the current user will be 
+      displayed here . -->
+
+	<% (@users - [ current_user ]).each do |us| %>      
+  	
+
+	<li> <%= us.email %> 
+	<%= link_to "Add" , {:controller => "invitation", :action => "insert", :idr => us.id , :id => current_user.id } %></li> 
+
+
+	<br />
+
+  <% end %>
+
+	
+
+  
+</ul>
+
+
